@@ -56,3 +56,17 @@ after_script:
       wget https://scrutinizer-ci.com/ocular.phar
       php ocular.phar code-coverage:upload --format=php-clover build/logs/coverage.clover
     fi
+  - |
+    git clone -b gh-pages git@github.com:madflow/spout.git
+    mkdir -p gh-pages/branches/$TRAVIS_BRANCH 
+    rm -rf gh-pages/branches/$TRAVIS_BRANCH/*
+    cp -R docs gh-pages/branches/$TRAVIS_BRANCH/
+    cd gh-pages
+    git add gh-pages/branches/$TRAVIS_BRANCH/
+    git commit -m "Deployed $TRAVIS_BRANCH to gh-pages"
+    git push origin gh-pages
+
+
+env:
+  global:
+    secure: Rx6KVDr3/poOBT4RIfsVhl6G6Vei17MJzWZk3CcoS1Y3vXP6J+VvEuKzOA7P7OdHybqv8LGoNO+5cWrPXTNd8yX36QCq4n3lMYmnJMa1XEJmTrUPEqXa/jtdFaacjDwkSgWtM32nqIhqsMDKI7NcGqHOWxjBFaqj4TtpMTMV2QIwn8Muu7cuwuJ3yM/PZMwL8Ur6TLBjvDsd78FVCNQ5x92Yv2XaaavFXJBxb0r9rVT6wHrlWp2gc4pVxB46YY/BwKav3ADXKbIG9/c7PLQwxagjQwmqXTrosMUsYdEKzXmWcANbU6roTj2QEKsRAJbObyoQTcufOFhEVEncmPtQ9w0m3BgCh8IRoQl4AkeJmm56TTybBSF9eFJRmotV3Mw0oSPQFybrnubXs/4/GSleLejNQl5En1WShLRHFxwOgK1cbnQZgxFr8UBpnJowAqSk7Irr5xI3N9ExZiXiJQsyHCpdT96m+w9UtfFmYVN0YtcW0ddMS+ObwsM5FfS8tJxFCm038iSB9SKsRKqFHdzy5z79YuLupU9MgUzBVN5kXiT1qZXzFHH4mVXECEmIl1NSrdoLf750VLeZeEOFOxTYDGvtjHhjczcLbenfwgEaBizTWr1APCW8yb6xCwz41i6NmeBlmrnxVtwUSnMfCOIg2ALvVmx/JlooxvxkYweyo+Q=
