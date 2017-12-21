@@ -2,6 +2,7 @@
 
 namespace Box\Spout\Writer\Common\Creator\Style;
 
+use Box\Spout\Common\Entity\Style\Alignment;
 use Box\Spout\Common\Entity\Style\Border;
 use Box\Spout\Common\Entity\Style\Style;
 
@@ -144,6 +145,21 @@ class StyleBuilder
     public function setBackgroundColor($color)
     {
         $this->style->setBackgroundColor($color);
+
+        return $this;
+    }
+
+    /**
+     * @param $horizontalAlignment
+     * @param $verticalAlignment
+     * @param $indention
+     * @return $this
+     */
+    public function setAlignment($horizontalAlignment, $verticalAlignment, $indention)
+    {
+        $this->style->setAlignment(
+            (new Alignment($horizontalAlignment, $verticalAlignment, $indention))
+        );
 
         return $this;
     }

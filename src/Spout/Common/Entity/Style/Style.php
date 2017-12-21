@@ -62,6 +62,9 @@ class Style
     /** @var Border */
     private $border;
 
+    /*** @var Alignment */
+    private $alignment;
+
     /** @var bool Whether border properties should be applied */
     private $shouldApplyBorder = false;
 
@@ -89,6 +92,25 @@ class Style
 
         return $this;
     }
+
+    /**
+     * @return Alignment
+     */
+    public function getAlignment()
+    {
+        return $this->alignment;
+    }
+
+    /**
+     * @param Alignment $alignment
+     * @return $this
+     */
+    public function setAlignment(Alignment $alignment)
+    {
+        $this->alignment = $alignment;
+        return $this;
+    }
+
 
     /**
      * @return Border
