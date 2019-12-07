@@ -23,7 +23,6 @@ cache:
     - $HOME/.php-cs-fixer
 
 before_install:
-  - echo "extension = zip.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - |
     if [[ "$WITH_COVERAGE" != "true" ]]; then
         phpenv config-rm xdebug.ini
@@ -37,7 +36,6 @@ install:
   - composer install --no-interaction --prefer-source
 
 before_script:
-  - phpenv config-rm xdebug.ini
   - mkdir -p "$HOME/.php-cs-fixer"
   - mkdir -p build/logs
 
