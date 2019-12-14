@@ -120,7 +120,7 @@ class FileSystemHelper implements FileSystemHelperInterface
      * @throws \Box\Spout\Common\Exception\IOException If the folder where the I/O operation should occur is not inside the base folder
      * @return void
      */
-    protected function throwIfOperationNotInBaseFolder($operationFolderPath)
+    protected function throwIfOperationNotInBaseFolder(string $operationFolderPath)
     {
         $operationFolderRealPath = \realpath($operationFolderPath);
         $isInBaseFolder = (\strpos($operationFolderRealPath, $this->baseFolderRealPath) === 0);
